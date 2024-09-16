@@ -1,0 +1,199 @@
+{
+  "uuid": "5be09640-d6ca-4d47-bdf9-3e519d176f2a",
+  "lastMigration": 32,
+  "name": "Recipes",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "2270ebb0-3eb8-4e40-b3bd-2efe3d321777",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "recipes",
+      "responses": [
+        {
+          "uuid": "e58d7bbe-4fb4-485e-bfae-00dbb30e7575",
+          "body": "[\n  {\n    \"name\": \"Recipe 1\",\n    \"description\": \"Delicious recipe\",\n    \"imagePath\": \"path/to/image.jpg\",\n    \"ingredients\": [\n      {\n        \"name\": \"Ingredient 1\",\n        \"amount\": 2\n      },\n      {\n        \"name\": \"Ingredient 2\",\n        \"amount\": 1\n      }\n    ]\n  },\n  {\n    \"name\": \"Recipe 2\",\n    \"description\": \"Another great recipe\",\n    \"imagePath\": \"path/to/another/image.jpg\",\n    \"ingredients\": []\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "0f4577be-345c-4872-8ae0-f34d76ed8236",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "recipes",
+      "responses": [
+        {
+          "uuid": "dae34c8e-57e7-4ea3-b7f7-4a60a8605838",
+          "body": "{\r\n  \"message\": \"Recipes stored successfully.\"\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "1e892f1b-6032-4444-82ad-7a4a386501d8",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "signup",
+      "responses": [
+        {
+          "uuid": "79c8de2c-b15b-4ff3-97bb-b8ef3e9878f7",
+          "body": "{\n  \"kind\": \"\",\n  \"idToken\": \"skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj\",\n  \"email\": \"ako@ako.com\",\n  \"refreshToken\": \"aLWQLoSOjswnbsjslsisadjhsAJssMsjdgcIOSedsjd\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"jasjdhasdkxchAJSkclASkfhadJAkskflkaskaskdj\",\n  \"registered\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "bc217477-1c2e-4449-9892-4c04a621bdf2",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "ff983cf9-9ea4-4109-99e9-d9098234c427",
+          "body": "{\n  \"kind\": \"\",\n  \"idToken\": \"skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj\",\n  \"email\": \"ako@ako.com\",\n  \"refreshToken\": \"aLWQLoSOjswnbsjslsisadjhsAJssMsjdgcIOSedsjd\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"jasjdhasdkxchAJSkclASkfhadJAkskflkaskaskdj\",\n  \"registered\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "2270ebb0-3eb8-4e40-b3bd-2efe3d321777"
+    },
+    {
+      "type": "route",
+      "uuid": "0f4577be-345c-4872-8ae0-f34d76ed8236"
+    },
+    {
+      "type": "route",
+      "uuid": "1e892f1b-6032-4444-82ad-7a4a386501d8"
+    },
+    {
+      "type": "route",
+      "uuid": "bc217477-1c2e-4449-9892-4c04a621bdf2"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
