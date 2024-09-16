@@ -113,15 +113,7 @@
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "header",
-              "modifier": "Authorization",
-              "value": "Bearer skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj",
-              "invert": false,
-              "operator": "equals"
-            }
-          ],
+          "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
