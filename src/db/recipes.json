@@ -103,35 +103,8 @@
       "endpoint": "login",
       "responses": [
         {
-          "uuid": "c0aa2379-4b03-480a-86d6-7fc86a98c1b2",
-          "body": "{\r\n  \"error\": \"Wrong email or password!\"\r\n}\r\n",
-          "latency": 0,
-          "statusCode": 401,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [
-            {
-              "target": "body",
-              "modifier": "",
-              "value": "{email: \"ako@ako.com\", password: \"123123\"}",
-              "invert": true,
-              "operator": "equals"
-            }
-          ],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        },
-        {
           "uuid": "ff983cf9-9ea4-4109-99e9-d9098234c427",
-          "body": "{\n  \"kind\": \"\",\n  \"idToken\": \"skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj\",\n  \"email\": \"ako@ako.com\",\n  \"password\":\"123123\",\n  \"refreshToken\": \"aLWQLoSOjswnbsjslsisadjhsAJssMsjdgcIOSedsjd\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"jasjdhasdkxchAJSkclASkfhadJAkskflkaskaskdj\",\n  \"registered\": \"\"\n}",
+          "body": "{\n  \"kind\": \"\",\n  \"idToken\": \"skjadjejalksdjAMsfalfKASjdkiGVOwsvjaxcj\",\n  \"email\": \"ako@ako.com\",\n  \"password\": \"123123\",\n  \"status\": \"success\",\n  \"refreshToken\": \"aLWQLoSOjswnbsjslsisadjhsAJssMsjdgcIOSedsjd\",\n  \"expiresIn\": \"3600\",\n  \"localId\": \"jasjdhasdkxchAJSkclASkfhadJAkskflkaskaskdj\",\n  \"registered\": \"\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -143,8 +116,15 @@
           "rules": [
             {
               "target": "body",
-              "modifier": "",
-              "value": "{email: \"ako@ako.com\", password: \"123123\"}",
+              "modifier": "$.email",
+              "value": "ako@ako.com",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "$.password",
+              "value": "123123",
               "invert": false,
               "operator": "equals"
             }
@@ -152,7 +132,7 @@
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false,
+          "default": true,
           "crudKey": "id",
           "callbacks": []
         }

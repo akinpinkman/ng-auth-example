@@ -9,6 +9,7 @@ export interface AuthResponse {
   idToken: string;
   email: string;
   password: string;
+  status: string;
   refreshToken: string;
   localId: string;
   registered?: boolean;
@@ -30,12 +31,7 @@ export class AuthService {
       })
       .pipe(
         tap((resData) => {
-          this.handleAuth(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            resData.password
-          );
+          this.handleAuth(resData.email, resData.localId, resData.idToken);
         })
       );
   }
@@ -49,12 +45,7 @@ export class AuthService {
 
       .pipe(
         tap((resData) => {
-          this.handleAuth(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            resData.password
-          );
+          this.handleAuth(resData.email, resData.localId, resData.idToken);
         })
       );
   }
@@ -62,7 +53,6 @@ export class AuthService {
   autoLogin() {
     const userData: {
       email: string;
-      password: string;
       id: string;
       _token: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -70,12 +60,7 @@ export class AuthService {
       return;
     }
 
-    const loadedUser = new User(
-      userData.email,
-      userData.id,
-      userData._token,
-      userData.password
-    );
+    const loadedUser = new User(userData.email, userData.id, userData._token);
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
@@ -88,15 +73,10 @@ export class AuthService {
     localStorage.removeItem('userData');
   }
 
-  private handleAuth(
-    email: string,
-    userId: string,
-    token: string,
-    password: string
-  ) {
+  private handleAuth(email: string, userId: string, token: string) {
     // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
 
-    const user = new User(email, userId, token, password);
+    const user = new User(email, userId, token);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }

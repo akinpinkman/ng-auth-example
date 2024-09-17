@@ -37,16 +37,22 @@ export class AuthComponent {
       authObs = this.authService.signup(email, password);
     }
 
-    authObs.subscribe((resData) => {
-      if (resData.email === email && resData.password === password) {
-        this.isLoading = false;
-        this.router.navigate(['/recipes']);
-      }
-      (error) => {
-        console.log(error);
+    authObs.subscribe({
+      next: (resData) => {
+        console.log('Response Data:', resData); // Log the response
+        if (resData.email === 'ako@ako.com' && resData.password === password) {
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+        } else {
+          this.error = 'Invalid email or password!';
+          this.isLoading = false;
+        }
+      },
+      error: (err) => {
+        console.log('Error:', err); // Log the error
         this.error = 'An error occurred!';
         this.isLoading = false;
-      };
+      },
     });
 
     form.reset();
