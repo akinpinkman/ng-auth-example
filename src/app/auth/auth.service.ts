@@ -8,8 +8,8 @@ export interface AuthResponse {
   kind: string;
   idToken: string;
   email: string;
+  password: string;
   refreshToken: string;
-  expiresIn: string;
   localId: string;
   registered?: boolean;
 }
@@ -34,7 +34,7 @@ export class AuthService {
             resData.email,
             resData.localId,
             resData.idToken,
-            +resData.expiresIn
+            resData.password
           );
         })
       );
@@ -46,13 +46,14 @@ export class AuthService {
         email: email,
         password: password,
       })
+
       .pipe(
         tap((resData) => {
           this.handleAuth(
             resData.email,
             resData.localId,
             resData.idToken,
-            +resData.expiresIn
+            resData.password
           );
         })
       );
@@ -61,6 +62,7 @@ export class AuthService {
   autoLogin() {
     const userData: {
       email: string;
+      password: string;
       id: string;
       _token: string;
     } = JSON.parse(localStorage.getItem('userData'));
@@ -68,7 +70,12 @@ export class AuthService {
       return;
     }
 
-    const loadedUser = new User(userData.email, userData.id, userData._token);
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      userData.password
+    );
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
@@ -85,11 +92,11 @@ export class AuthService {
     email: string,
     userId: string,
     token: string,
-    expiresIn: number
+    password: string
   ) {
     // const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
 
-    const user = new User(email, userId, token);
+    const user = new User(email, userId, token, password);
     this.user.next(user);
     localStorage.setItem('userData', JSON.stringify(user));
   }
